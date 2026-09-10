@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Software Engineer" as SE
+actor "Release Manager" as RM
+
+rectangle "Feature Flag & Dynamic Config Manager" {
+  usecase "Create Feature Flag" as Create
+  usecase "Configure Feature Flag" as Config
+  usecase "Configure Targeting Rules" as Target
+  usecase "Configure Percentage Rollout" as Rollout
+  usecase "Configure Environment Override" as Override
+  usecase "Evaluate Feature Flag" as Evaluate
+  usecase "Evaluate Targeting Rules" as EvalRules
+  usecase "Update Feature Flag" as Update
+  usecase "Synchronize with Client SDK" as Sync
+  usecase "Manage Feature Flag" as Manage
+}
+
+SE --> Create
+SE --> Config
+SE --> Rollout
+SE --> Override
+SE --> Update
+SE --> Evaluate
+
+RM --> Create
+RM --> Config
+RM --> Rollout
+RM --> Override
+RM --> Update
+RM --> Evaluate
+RM --> Manage
+
+Create ..> Target : <<include>>
+Evaluate ..> EvalRules : <<include>>
+Override ..> Config : <<extend>>
+Update --> Sync
+
+@enduml
