@@ -1,0 +1,1 @@
+{'B01': {'title': 'Clean Code', 'copies': 2}, 'B02': {'title': 'The Pragmatic Programmer', 'copies': 2}, 'B03': {'title': 'Design Patterns', 'copies': 2}}
